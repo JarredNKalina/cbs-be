@@ -1,0 +1,15 @@
+node_modules
+dist
+coverage
+.dockerignore
+.git
+.gitignore
+docker-compose.prod.yml
+docker-compose.dev.yml
+docker-compose.test.yml
+*.md
+
+.env
+.env.test.local
+.env.testing
+.env.development
