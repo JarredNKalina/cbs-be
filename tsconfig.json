@@ -8,8 +8,9 @@
 		"noUnusedLocals": true,
 		"noImplicitAny": true,
 		"strict": true,
-		"strictNullChecks": true
+		"strictNullChecks": true,
+		"resolveJsonModule": true
 	},
-	"include": ["src"],
+	"include": ["src", "firebase.config.js"],
 	"exclude": ["node_modules"]
 }
