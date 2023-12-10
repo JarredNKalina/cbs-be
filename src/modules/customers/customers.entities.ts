@@ -2,12 +2,18 @@ import { z } from "zod"
 import { CustomerCreateDTO } from "../../@types/customer"
 import { customerCreateDTOValidator } from "./customers.validators"
 
-export function makeCustomer({ email, firstName, lastName }: CustomerCreateDTO) {
+export function makeCustomer({
+	firstName,
+	lastName,
+	phoneNumber,
+	createdUserId,
+}: CustomerCreateDTO) {
 	try {
 		customerCreateDTOValidator.parse({
-			email,
 			firstName,
 			lastName,
+			phoneNumber,
+			createdUserId,
 		})
 	} catch (error) {
 		if (error instanceof z.ZodError) {
@@ -18,6 +24,7 @@ export function makeCustomer({ email, firstName, lastName }: CustomerCreateDTO) 
 	return Object.freeze({
 		getFirstName: () => firstName,
 		getLastName: () => lastName,
-		getEmail: () => email,
+		getPhoneNumber: () => phoneNumber,
+		getCreatedUserId: () => createdUserId,
 	})
 }

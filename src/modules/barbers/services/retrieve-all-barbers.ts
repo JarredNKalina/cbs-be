@@ -5,5 +5,10 @@ export async function retrieveAllBarbers() {
 
 	if (!barbers.result.teamMembers) throw new Error("No barbers found")
 
-	return barbers.result.teamMembers
+	const returnBarbers = barbers.result.teamMembers.map(barber => {
+		if (!barber) throw new Error("No barbers found")
+		const { assignedLocations, ...barberWithoutLocations } = barber
+		return barberWithoutLocations
+	})
+	return returnBarbers
 }

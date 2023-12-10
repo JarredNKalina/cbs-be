@@ -1,1 +1,1 @@
-export {} from "./retrieve-all-barbers"
+export { retrieveAllBarbers } from "./retrieve-all-barbers"

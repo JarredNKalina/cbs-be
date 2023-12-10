@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse } from "../../../@types/http"
-import { createUser } from "../services/createUser"
+import { createUser } from "../services"
 
 export async function postUser(httpRequest: HttpRequest): Promise<HttpResponse | undefined> {
 	const credentials = httpRequest.body

@@ -18,6 +18,7 @@ export default function makeExpressCallback(controller: Controller) {
 			files: req.files,
 			file: req.file,
 		}
+		console.log({ path: req.path, method: req.method, body: req.body })
 		if (req.path.includes("login")) {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			const { password, ...rest } = req.body

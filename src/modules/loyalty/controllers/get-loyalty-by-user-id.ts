@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse } from "../../../@types/http"
-import { retrieveLoyaltyByUserId } from "../services/retrieve-loyalty-by-user-id"
+import { retrieveLoyaltyByUserId } from "../services"
 
 export async function getLoyaltyByUserId(
 	httpRequest: HttpRequest

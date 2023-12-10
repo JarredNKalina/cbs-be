@@ -8,5 +8,6 @@ export const bookingCreateDTOValidator = z.object({
 	appointmentSegments: z.object({
 		teamMemberId: z.string(),
 		serviceId: z.string(),
+		serviceVariationVersion: z.number(),
 	}),
 })

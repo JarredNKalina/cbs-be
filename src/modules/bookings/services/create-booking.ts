@@ -2,28 +2,31 @@ import { squareClient } from "../../.."
 import { BookingCreateDTO } from "../../../@types/booking"
 
 export async function createBooking(bookingCreateDTO: BookingCreateDTO) {
-	const booking = await squareClient.bookingsApi.createBooking({
-		booking: {
-			locationId: bookingCreateDTO.locationId,
-			startAt: bookingCreateDTO.startAt,
-			customerId: bookingCreateDTO.customerId,
-			customerNote: bookingCreateDTO.customerNote,
-			transitionTimeMinutes: 10,
-			sellerNote: "Booked via the mobile app",
-			status: "PENDING",
-			appointmentSegments: [
-				{
-					teamMemberId: bookingCreateDTO.appointmentSegments.teamMemberId,
-					durationMinutes: 50,
-					serviceVariationId: bookingCreateDTO.appointmentSegments.serviceId,
-				},
-			],
-		},
-	})
-
-	if (!booking.result.booking) throw new Error("Booking not created")
-
-	return booking.result.booking
+	try {
+		const booking = await squareClient.bookingsApi.createBooking({
+			booking: {
+				locationId: bookingCreateDTO.locationId,
+				startAt: bookingCreateDTO.startAt,
+				customerId: bookingCreateDTO.customerId,
+				customerNote: bookingCreateDTO.customerNote,
+				sellerNote: "Booked via the mobile app",
+				appointmentSegments: [
+					{
+						teamMemberId: bookingCreateDTO.appointmentSegments.teamMemberId,
+						durationMinutes: 60,
+						serviceVariationId: bookingCreateDTO.appointmentSegments.serviceId,
+						serviceVariationVersion: BigInt(
+							bookingCreateDTO.appointmentSegments.serviceVariationVersion
+						),
+					},
+				],
+			},
+		})
+		if (!booking.result.booking) throw new Error("Booking not created")
+		console.log({ booking: booking.result.booking })
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 // Booking.location_id

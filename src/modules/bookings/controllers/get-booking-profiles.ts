@@ -1,9 +1,9 @@
 import { HttpResponse } from "../../../@types/http"
-import { retrieveAllBarbers } from "../services"
+import { retrieveAllBookingProfiles } from "../services"
 
-export async function getAllBarbers(): Promise<HttpResponse | undefined> {
+export async function getAllBookingProfiles(): Promise<HttpResponse | undefined> {
 	try {
-		const body = await retrieveAllBarbers()
+		const body = await retrieveAllBookingProfiles()
 
 		return {
 			headers: { "Content-Type": "application/json" },

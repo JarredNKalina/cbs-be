@@ -3,14 +3,14 @@ import { createBooking } from "../services"
 
 export async function postBooking(httpRequest: HttpRequest): Promise<HttpResponse | undefined> {
 	try {
-		const { body } = httpRequest.body
+		const body = httpRequest.body
 
-		const booking = await createBooking(body)
+		await createBooking(body)
 
 		return {
 			headers: { "Content-Type": "application/json" },
 			statusCode: 201,
-			body: booking,
+			body: { message: "success" },
 		}
 	} catch (error) {
 		if (error instanceof Error) {

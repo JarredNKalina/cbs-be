@@ -1,5 +1,5 @@
 import { HttpResponse } from "../../../@types/http"
-import { retrieveAllServices } from "../services/retrieve-all-services"
+import { retrieveAllServices } from "../services"
 
 export async function getAllServices(): Promise<HttpResponse | undefined> {
 	try {
